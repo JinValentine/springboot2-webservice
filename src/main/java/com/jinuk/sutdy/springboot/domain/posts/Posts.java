@@ -31,4 +31,10 @@ public class Posts {
         this.author = author;
     }
 
+    // Domain에서 비즈니스 처리를 담당해야 되기 때문에
+    public void update(String title, String content){
+        this.title = title;
+        this.content = content;
+    }
+
 }
