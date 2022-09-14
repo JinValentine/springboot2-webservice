@@ -1,5 +1,6 @@
 package com.jinuk.sutdy.springboot.domain.posts;
 
+import com.jinuk.sutdy.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor // 기본 생성자 자동 추가
 @Entity // 테이블과 링크될 클래스이다. 카멜케이스 클래스 -> 언더스코어 네이밍 테이블 SalesManger.java -> sales_manager table
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id // 테이블의 pk 필드
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment를 위해 IDENTITY옵션을 사용
