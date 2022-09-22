@@ -1,0 +1,12 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js.bootstrap.min.js"></script>
+
+<!--index.js 추가 -->
+<script src="/js/app/index.js"></script>
+
+</body>
+</html>
+
+{{! 빠른 페이지로딩속도를 위해 css는 header, js는 footer에 두었다. HTML은 위에서부터 head -> body 순으로 실행되기 때문이다. }}
+{{! 부트스트랩은 제이쿼리가 꼭 필요하기 때문에 제이쿼리가 먼저 호출 되도록 하였다. }}
+{{! 스프링부트는 기본적으로 src/main/resources/static에 js, css, image 등 정적파일들을 url에서 /로 설정한다.}}
