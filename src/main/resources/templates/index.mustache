@@ -20,10 +20,10 @@
             </tr>
             </thead>
             <tbody id="tbody">
-            {{#posts}} <!-- posts라는 List를 순회 / Java의 for문과 동일 -->
+            {{#posts}} {{! posts라는 List를 순회 / Java의 for문과 동일}}
                 <tr>
-                <td>{{id}}</td> <!-- List에서 뽑아낸 객체의 필드를 사용 -->
-                <td>{{title}}</td>
+                <td>{{id}}</td> {{! List에서 뽑아낸 객체의 필드를 사용}}
+                    <td><a href="/posts/update/{{id}}">{{title}}</a></td>
                 <td>{{author}}</td>
                 <td>{{modifiedDate}}</td>
                 </tr>

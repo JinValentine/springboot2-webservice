@@ -46,4 +46,12 @@ public class PostsService {
                 .collect(Collectors.toList()); // Posts -> PostsListResponseDto -> List
 
     }
+
+    @Transactional
+    public void delete (Long id){
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+
+        postsRepository.delete(posts); // deleteById 메소드로 바로 삭제해도 되지만 존재하는 Posts인지 확인을 위해 조회 후 삭제한다.
+    }
 }
