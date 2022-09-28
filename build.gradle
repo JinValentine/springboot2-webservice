@@ -30,6 +30,7 @@ dependencies {
     implementation('com.h2database:h2') /* 인메모리형 관계형 데이터베이스
      메모리에서 실행되기 때문에 애플리케이션 재시작할 때마다 초기화 된다. */
     implementation('org.springframework.boot:spring-boot-starter-mustache')
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 
 
