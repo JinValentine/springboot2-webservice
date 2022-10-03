@@ -1,5 +1,6 @@
 package com.jinuk.sutdy.springboot.web;
 
+import com.jinuk.sutdy.springboot.config.auth.LoginUser;
 import com.jinuk.sutdy.springboot.config.auth.dto.SessionUser;
 import com.jinuk.sutdy.springboot.service.posts.PostsService;
 import com.jinuk.sutdy.springboot.web.dto.PostsResponseDto;
@@ -16,14 +17,13 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
 
     private final PostsService postsService;
-    private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) { // model: 객체를 저장할 수 있는 곳
+    public String index(Model model, @LoginUser SessionUser user) {
+        // model: 객체를 저장할 수 있는 곳, 커스텀어노테이션인 @LoginUser를 통해 세션 정보를 가져올 수 있다.
 
         model.addAttribute("posts", postsService.findAllDesc());
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         // CustomOAuth2UserService에서 로그인 성공시 세션에 SessionUser가 저장되기에 getAttribute로 user값을 가져올 수 있다.
 
         if (user != null) {

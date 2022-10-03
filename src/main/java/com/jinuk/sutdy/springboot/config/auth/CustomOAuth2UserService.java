@@ -24,11 +24,18 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     private final UserRepository userRepository;
     private final HttpSession httpSession;
 
-    @Override
+    @Override // 서비스로부터 받은 userRequest 데이터를 후처리하는 메서드
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+        /*
+         토큰, 클라이언트 정보가 들어있는 userRequest를 통해 OAuth 서비스에서 가져온 유저 정보를 담고 있는 OAuth2User를 가져온다.
+         마지막에 동일한 이메일을 사용하는 사용자가 이미 데이터베이스에 있으면 세부 정보를 업데이트하고, 그렇지 않으면 새 사용자를 등록합니다.
+         */
 
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
-
+        /*
+        DefaultOAuth2UserServices는 OAuth2UserService의 구현체이다.
+        해당 클래스를 이용해서 userRequest에 있는 정보를 빼낼 수 있다..
+        */
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
 
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
@@ -46,6 +53,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         httpSession.setAttribute("user", new SessionUser(user));
 
+        // 객체 하나만 저장
         return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());
