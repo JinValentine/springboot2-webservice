@@ -1,9 +1,14 @@
 package com.jinuk.sutdy.springboot.web;
 
+import com.jinuk.sutdy.springboot.config.auth.SecurityConfig;
+import lombok.With;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -13,12 +18,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /* 스프링부트 테스트와 JUnit 사이에 연결자 역할 */
 @RunWith(SpringRunner.class)
 /* Web에 집중할 수 있는 어노테이션 Controller 위주 테스트할 때 사용*/
-@WebMvcTest(controllers = HelloController.class)
+@WebMvcTest(controllers = HelloController.class,
+        excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)})
+        // @WebMvcTest가 SecurityConfig는 읽지만 CustomOAuth2UserService는 읽을 수 없기에 스캔대상에서 제거해준다.
 public class HelloControllerTest {
 
     @Autowired
     private MockMvc mvc; /* 웹 API를 테스트 할 떄 사용 (GET, POST)등을 테스트*/
 
+    @WithMockUser(roles = "USER")
     @Test
     public void return_hello() throws Exception {
         String hello = "hello";
@@ -29,6 +37,7 @@ public class HelloControllerTest {
                 .andExpect((content().string(hello))); /* 응답 본문 내용 검증 */
     }
 
+    @WithMockUser(roles = "USER")
     @Test
     public void return_helloDto() throws Exception{
         String name = "hello";
