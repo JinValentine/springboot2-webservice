@@ -3,4 +3,4 @@ os: linux
 files:
   - source: / # CodeDeploy에서 전달해 준 파일 중 destination으로 이동시킬 대상, 루트 경로(/)는 전체 파일을 이야기한다.
     destination: /home/ec2-user/app/step2/zip/ # source에서 지정된 파일을 받을 위치, Jar 실행은 여기에서 옮긴 파일들로 진행된다.
-    overwrite: yes # 덮어쓰기 여부
+    overwrite: yes # 덮어쓰기 가능 여부
