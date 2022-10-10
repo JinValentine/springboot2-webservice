@@ -6,7 +6,7 @@
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Publishing-using-gradle
 
 env:
-  S3_BUCKET_NAME: springboot2-webservice # S3 버킷이름
+  S3_BUCKET_NAME: springboot2-bucket # S3 버킷이름
   PROJECT_NAME: springboot2-webservice # Git Hub 프로젝트 이름
 
 
@@ -56,7 +56,7 @@ jobs:
       shell: bash
 
     - name: Make zip file # 프로젝트 이름으로 해당 폴더를 모두 압축시킨다. (빌드된 전체 폴더)
-      run: zip -r ./$PROJECT_NAME.ZIP .
+      run: zip -r ./$PROJECT_NAME.zip .
       shell: bash
 
     - name: Configure AWS credentials # aws에 해당 키값으로 접속을 진행한다.
