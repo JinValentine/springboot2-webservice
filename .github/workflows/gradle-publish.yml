@@ -56,9 +56,9 @@ jobs:
       run: echo "CurrentTime=${{steps.current-time.outputs.formattedTime}}"
       shell: bash
 
-    - name: Generate deployment package
-      run: |
-        mkdir -p before-deploy
+    - name: Generate deployment package # 배포할 파일 압축해서 옮기기
+      run: | # before-deploy 에 파일 저장 -> zip 압축 -> 상위 디렉토리 이동 -> deploy로 파일이동
+        mkdir -p before-deploy 
         cp scripts/*.sh before-deploy/
         cp appspec.yml before-deploy/
         cp build/libs/*.jar before-deploy/
