@@ -11,7 +11,7 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/
 echo "> 현재 구동중인 애플리케이션 pid 확인"
 
 # 현재 수행 중인 스프링부트 애플리케이션 프로세스 ID를 찾는다.
-CURRENT_PID=$(pgrep -fl ${PROJECT_NAME} | grep jar | awk '{print $1}'
+CURRENT_PID=$(pgrep -fl ${PROJECT_NAME} | grep jar | awk '{print $1})'
 
 echo "현재 구동중인 애플리케이션 pid: $CURRENT_PID"
 
