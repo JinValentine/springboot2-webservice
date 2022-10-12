@@ -74,7 +74,7 @@ public class ProfileControllerTest {
         //given
         String expectedProfile = "default";
         MockEnvironment env = new MockEnvironment();
-        ProfileController controller =new ProfileController(env);
+        ProfileController controller = new ProfileController(env);
 
         //when
         String profile = controller.profile();
