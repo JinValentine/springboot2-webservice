@@ -7,8 +7,8 @@ JDK 1.8 version
 springBootVersion = '2.1.9.RELEASE'
 
 ## View
-JQuery
-Ajax
+JQuery  
+Ajax  
 Mustache
 
 ## Gradle 
@@ -24,10 +24,10 @@ AWS EC2 Linux2
 AWS RDS(MariaDB)
 
 ## CI / CD
-Github Action
-AWS S3 
-AWS CodeDeploy
+Github Action  
+AWS S3   
+AWS CodeDeploy  
 
-Nginx를 이용하여 무중단 배포 
+Nginx를 이용하여 무중단 배포   
 
 ![스프링부트와 AWS로 혼자 구현하는 웹서비스](https://user-images.githubusercontent.com/77107216/195603287-0473409f-6a0e-4288-b0b2-878e19c63548.png)
