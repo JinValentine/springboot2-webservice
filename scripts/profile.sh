@@ -7,7 +7,7 @@ function find_idle_profile()
     # 스프링부트 정상 수행중인지 확인, 응답값 HttpStauts로 받고 400이상이면 모두 예외로 보고 real2를 현재 profile로 사용
     RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost/profile)
 
-    if [ ${RESPONSE_CODE} -ge 400] # 400보다 크면(즉,  40x/50x 에러 모두 포함)
+    if [ ${RESPONSE_CODE} -ge 400 ] # 400보다 크면(즉,  40x/50x 에러 모두 포함)
 
     then
         CURRENT_PROFILE=real2
@@ -36,6 +36,4 @@ function find_idle_port()
     else
         echo "8082"
     fi
-}
-
 }
